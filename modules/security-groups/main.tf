@@ -1,6 +1,6 @@
 
 #----SG for ports: 22, 80, 443----
-resource "aws_security_group" "ec2_sg_ssh_http" {
+resource "aws_security_group" "ec2_sg_ssh_http_https {
   name        = var.ec2_sg_name
   vpc_id      = var.vpc_id
   description = "Enable the Port 22, 80, 443"
@@ -17,18 +17,86 @@ resource "aws_security_group" "ec2_sg_ssh_http" {
 }
 
 #Ingress rules using count
-resource "aws_security_group_rule" "sg_ingress_ssh_http" {
-  count             = length(var.sg_ssh_http_ports)
+resource "aws_security_group_rule" "sg_ingress_ssh_http_https" {
+  count             = length(var.sg_ssh_http_https_ports)
   type              = "ingress"
-  from_port         = var.sg_ssh_http_ports[count.index]
-  to_port           = var.sg_ssh_http_ports[count.index]
+  from_port         = var.sg_ssh_http_https_ports[count.index]
+  to_port           = var.sg_ssh_http_https_ports[count.index]
   protocol          = "tcp"
   cidr_blocks       = ["0.0.0.0/0"]
-  security_group_id = aws_security_group.ec2_sg_ssh_http.id
-  description       = "Allow port ${var.sg_ssh_http_ports[count.index]} from anywhere"
+  security_group_id = aws_security_group.ec2_sg_ssh_http_https.id
+  description       = "Allow port ${var.sg_ssh_http_https_ports[count.index]} from anywhere"
 }
 
+
+##############################
+# Security Group for ec2_asg
+##############################
+resource "aws_security_group" "sg_ec2_asg" {
+  name        = "SG for EC2-ASG to enable port 1024-65535, 22"
+  description = "Allow traffic for EC2"
+  vpc_id      = var.vpc_id
+
+  ingress {
+    description     = "Allow ingress traffic from ALB on HTTP on ephemeral ports"
+    from_port       = 1024
+    to_port         = 65535
+    protocol        = "tcp"
+    security_groups = [aws_security_group.ec2_sg_ssh_http_https.id]          #Only traffic coming from alb that have SG attached can reach ec2-asg on port 1024-65535.
+  }
+
+  ingress {
+    description     = "Allow SSH ingress traffic from bastion host"
+    from_port       = 22
+    to_port         = 22
+    protocol        = "tcp"
+    security_groups = [aws_security_group.ec2_sg_ssh_http_https.id]          #Only traffic coming from bastion-ec2 that have SG attached can reach ec2-asg on port 22.
+  }
+
+  egress {
+    description = "Allow all egress traffic"
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  tags = { Name = "Security Group: 1024-65535, 22" }
+}
+
+
+##############################################
+# Create the security group for VPC Endpoints
+##############################################
+
+resource "aws_security_group" "sg_for_vpc_endpoints_https" {
+  name        = "SG for vpc endpoints to allow 443"
+  description = "Allow traffic for VPC Endpoints"
+  vpc_id      = var.vpc_id
+
+  ingress {
+    description     = "Allow ingress traffic from EC2 Hosts"
+    from_port       = 443
+    to_port         = 443
+    protocol        = "tcp"
+    security_groups = [aws_security_group.security_group_ec2.id]         #Only resources that belong to "sg-ec2" can reach the endpoint.
+  }
+
+  egress {
+    description = "Allow all egress traffic"
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  tags = { Name = "Security Group: vpc-endpoints" }
+}
+
+
+###########################
 # # Security Group for app
+###########################
 # resource "aws_security_group" "ec2_sg_python_api" {
 #   name        = var.ec2_sg_name_for_python_api
 #   vpc_id      = var.vpc_id
@@ -44,7 +112,9 @@ resource "aws_security_group_rule" "sg_ingress_ssh_http" {
 #   tags = { Name = "Security Group: 5000" }
 # }
 
+###########################
 # # Security Group for RDS
+###########################
 # resource "aws_security_group" "rds_mysql_sg" {
 #   name        = "SG for RDS to enable port 3306"
 #   vpc_id      = var.vpc_id
@@ -59,63 +129,3 @@ resource "aws_security_group_rule" "sg_ingress_ssh_http" {
 #   }
 #   tags = { Name = "Security Group: 3360" }
 # }
-
-# Security Group for ec2
-resource "aws_security_group" "security_group_ec2" {
-  name        = "SG for EC2 to enable port 1024-65535, 22"
-  description = "Allow traffic for EC2"
-  vpc_id      = var.vpc_id
-
-  ingress {
-    description     = "Allow ingress traffic from ALB on HTTP on ephemeral ports"
-    from_port       = 1024
-    to_port         = 65535
-    protocol        = "tcp"
-    security_groups = [aws_security_group.ec2_sg_ssh_http.id] #Only traffic coming from alb that have SG: attached can reach ec2 on port 1024-65535.
-  }
-
-  ingress {
-    description     = "Allow SSH ingress traffic from bastion host"
-    from_port       = 22
-    to_port         = 22
-    protocol        = "tcp"
-    security_groups = [aws_security_group.ec2_sg_ssh_http.id] #Only traffic coming from bastion-ec2 that have SG: attached can reach ec2 on port 22.
-  }
-
-  egress {
-    description = "Allow all egress traffic"
-    from_port   = 0
-    to_port     = 0
-    protocol    = "-1"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-
-  tags = { Name = "Security Group: 1024-65535, 22" }
-}
-
-
-##
-# Create the security group for VPC Endpoints
-resource "aws_security_group" "sg_vpc_endpoints" {
-  name        = "SG for vpc endpoints to allow 443"
-  description = "Allow traffic for VPC Endpoints"
-  vpc_id      = var.vpc_id
-
-  ingress {
-    description     = "Allow ingress traffic from EC2 Hosts"
-    from_port       = 443
-    to_port         = 443
-    protocol        = "tcp"
-    security_groups = [aws_security_group.security_group_ec2.id] #Only resources that belong to sg-ec2 can reach the endpoint.
-  }
-
-  egress {
-    description = "Allow all egress traffic"
-    from_port   = 0
-    to_port     = 0
-    protocol    = "-1"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-
-  tags = { Name = "Security Group: vpc-endpoints" }
-}
