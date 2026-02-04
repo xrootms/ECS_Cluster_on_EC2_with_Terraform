@@ -18,3 +18,8 @@ output "srl_proj_dev_private_subnets" {
 output "private_subnet_cidr_block" {
   value =aws_subnet.srl_proj_dev_private_subnets.*.cidr_block
 }
+
+
+output "private_route_table_id" {
+  value = aws_route_table.srl_proj_dev_private_route_table.id
+}
