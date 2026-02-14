@@ -1,7 +1,6 @@
-
 #----SG for ports: 22, 80, 443----
-resource "aws_security_group" "ec2_sg_ssh_http_https {
-  name        = var.ec2_sg_name
+resource "aws_security_group" "sg_ssh_http_https" {
+  name        = "SG for ec2-Bastion & ALB to enable 22, 80 and HTTPS"
   vpc_id      = var.vpc_id
   description = "Enable the Port 22, 80, 443"
 
@@ -13,7 +12,10 @@ resource "aws_security_group" "ec2_sg_ssh_http_https {
     cidr_blocks = ["0.0.0.0/0"]
     description = "Allow outgoing request to anywhere"
   }
-  tags = { Name = "Security Group: SSH, HTTP, HTTPS" }
+
+  tags = merge(var.common_tags, {
+    Name = "Security Group: SSH, HTTP, HTTPS"
+  })
 }
 
 #Ingress rules using count
@@ -24,7 +26,7 @@ resource "aws_security_group_rule" "sg_ingress_ssh_http_https" {
   to_port           = var.sg_ssh_http_https_ports[count.index]
   protocol          = "tcp"
   cidr_blocks       = ["0.0.0.0/0"]
-  security_group_id = aws_security_group.ec2_sg_ssh_http_https.id
+  security_group_id = aws_security_group.sg_ssh_http_https.id
   description       = "Allow port ${var.sg_ssh_http_https_ports[count.index]} from anywhere"
 }
 
@@ -42,7 +44,7 @@ resource "aws_security_group" "sg_ec2_asg" {
     from_port       = 1024
     to_port         = 65535
     protocol        = "tcp"
-    security_groups = [aws_security_group.ec2_sg_ssh_http_https.id]          #Only traffic coming from alb that have SG attached can reach ec2-asg on port 1024-65535.
+    security_groups = [aws_security_group.sg_ssh_http_https.id]          #Only traffic coming from alb that have SG attached can reach ec2-asg on port 1024-65535.
   }
 
   ingress {
@@ -50,7 +52,7 @@ resource "aws_security_group" "sg_ec2_asg" {
     from_port       = 22
     to_port         = 22
     protocol        = "tcp"
-    security_groups = [aws_security_group.ec2_sg_ssh_http_https.id]          #Only traffic coming from bastion-ec2 that have SG attached can reach ec2-asg on port 22.
+    security_groups = [aws_security_group.sg_ssh_http_https.id]          #Only traffic coming from bastion-ec2 that have SG attached can reach ec2-asg on port 22.
   }
 
   egress {
@@ -61,7 +63,9 @@ resource "aws_security_group" "sg_ec2_asg" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
-  tags = { Name = "Security Group: 1024-65535, 22" }
+  tags = merge(var.common_tags, {
+    Name = "Security Group: 1024-65535, 22"
+  })
 }
 
 
@@ -79,7 +83,7 @@ resource "aws_security_group" "sg_for_vpc_endpoints_https" {
     from_port       = 443
     to_port         = 443
     protocol        = "tcp"
-    security_groups = [aws_security_group.security_group_ec2.id]         #Only resources that belong to "sg-ec2" can reach the endpoint.
+    security_groups = [aws_security_group.sg_ec2_asg.id]         #Only resources that belong to "sg-ec2-asg" can reach the endpoint.
   }
 
   egress {
@@ -90,10 +94,12 @@ resource "aws_security_group" "sg_for_vpc_endpoints_https" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
-  tags = { Name = "Security Group: vpc-endpoints" }
+  tags = merge(var.common_tags, {
+    Name = "Security Group: vpc-endpoints"
+  })
 }
 
-
+/*
 ###########################
 # # Security Group for app
 ###########################
@@ -128,4 +134,4 @@ resource "aws_security_group" "sg_for_vpc_endpoints_https" {
 #     description     = "Allow MySQL from EC2 SG"
 #   }
 #   tags = { Name = "Security Group: 3360" }
-# }
+# }*/
