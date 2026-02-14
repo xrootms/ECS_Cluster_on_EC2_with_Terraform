@@ -1,6 +1,8 @@
 #setup vpc
 resource "aws_vpc" "ctt_proj_dev_vpc" {
   cidr_block       = var.vpc_cidr
+  enable_dns_support   = true    # required for VPC endpoints
+  enable_dns_hostnames = true    # required for private DNS endpoints
   
 
   tags = merge(var.common_tags, {
