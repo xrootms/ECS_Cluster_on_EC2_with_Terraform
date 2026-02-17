@@ -2,13 +2,13 @@ output "sg_for_ssh_http_https_id" {
   value = aws_security_group.sg_ssh_http_https.id
 }
 
- output "sg_ec2_asg_id" {
-   value = aws_security_group.sg_ec2_asg.id
- }
+output "sg_ec2_asg_id" {
+  value = aws_security_group.sg_ec2_asg.id
+}
 
- output "sg_for_vpc_endpoints_https_id" {
-   value = aws_security_group.sg_for_vpc_endpoints_https.id
- }
+output "sg_for_vpc_endpoints_https_id" {
+  value = aws_security_group.sg_for_vpc_endpoints_https.id
+}
 
 
 # output "rds_mysql_sg_id" {

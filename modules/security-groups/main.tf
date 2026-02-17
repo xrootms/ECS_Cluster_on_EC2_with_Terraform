@@ -44,7 +44,7 @@ resource "aws_security_group" "sg_ec2_asg" {
     from_port       = 1024
     to_port         = 65535
     protocol        = "tcp"
-    security_groups = [aws_security_group.sg_ssh_http_https.id]          #Only traffic coming from alb that have SG attached can reach ec2-asg on port 1024-65535.
+    security_groups = [aws_security_group.sg_ssh_http_https.id] #Only traffic coming from alb that have SG attached can reach ec2-asg on port 1024-65535.
   }
 
   ingress {
@@ -52,7 +52,7 @@ resource "aws_security_group" "sg_ec2_asg" {
     from_port       = 22
     to_port         = 22
     protocol        = "tcp"
-    security_groups = [aws_security_group.sg_ssh_http_https.id]          #Only traffic coming from bastion-ec2 that have SG attached can reach ec2-asg on port 22.
+    security_groups = [aws_security_group.sg_ssh_http_https.id] #Only traffic coming from bastion-ec2 that have SG attached can reach ec2-asg on port 22.
   }
 
   egress {
@@ -83,7 +83,7 @@ resource "aws_security_group" "sg_for_vpc_endpoints_https" {
     from_port       = 443
     to_port         = 443
     protocol        = "tcp"
-    security_groups = [aws_security_group.sg_ec2_asg.id]         #Only resources that belong to "sg-ec2-asg" can reach the endpoint.
+    security_groups = [aws_security_group.sg_ec2_asg.id] #Only resources that belong to "sg-ec2-asg" can reach the endpoint.
   }
 
   egress {
