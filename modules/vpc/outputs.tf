@@ -7,7 +7,7 @@ output "ctt_proj_dev_public_subnets" {
 }
 
 output "public_subnet_cidr_block" {
-  value =aws_subnet.ctt_proj_dev_public_subnets.*.cidr_block
+  value = aws_subnet.ctt_proj_dev_public_subnets.*.cidr_block
 }
 
 
@@ -16,7 +16,7 @@ output "ctt_proj_dev_private_subnets" {
 }
 
 output "private_subnet_cidr_block" {
-  value =aws_subnet.ctt_proj_dev_private_subnets.*.cidr_block
+  value = aws_subnet.ctt_proj_dev_private_subnets.*.cidr_block
 }
 
 
