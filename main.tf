@@ -113,5 +113,7 @@ module "aws_ceritification_manager" {
   source         = "./modules/certificate-manager"
   domain_name    = var.domain_name
   hosted_zone_id = module.hosted_zone.hosted_zone_id
+  common_tags              = local.common_tags
+  naming_prefix            = local.naming_prefix
 }
 
