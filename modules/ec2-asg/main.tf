@@ -72,11 +72,11 @@ resource "aws_launch_template" "ctt_proj_dev_ecs_launch_template" {
 resource "aws_autoscaling_group" "ctt_proj_dev_autoscaling_group" {
   name                  = var.ec2_asg_name
   vpc_zone_identifier   = tolist(var.private_subnets)
-  desired_capacity      = 1                #2
-  max_size              = 2                #6
+  desired_capacity      = 2                         #basedon on environment 
+  max_size              = 6                         #based on environment
   min_size              = 1
-  health_check_type     = "EC2"                   # ASG checks only EC2 instance status
-  protect_from_scale_in = false                     # true. NOT allowe to terminate this instance.
+  health_check_type     = "EC2"                     # ASG checks only EC2 instance status
+  protect_from_scale_in = true                     # "true". used for NOT allowe to terminate this instance.
 
   #When you enable metrics, tells AWS to publish detailed ASG metrics to CloudWatch so you can monitor what’s happening inside the ASG.
   enabled_metrics = [
