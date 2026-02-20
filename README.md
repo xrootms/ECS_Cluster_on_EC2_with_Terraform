@@ -3,12 +3,10 @@
 This project provisions a complete AWS infrastructure using Terraform to deploy a Node.js containerized application on Amazon ECS (EC2 launch type) behind an Application Load Balancer, with a custom domain and HTTPS enabled.
 It follows Infrastructure as Code (IaC) best practices using modular Terraform design.
 
-### Architecture Overview
-
-### Diagram
+### ## Architecture Diagram
 
 <p align="center">
-  <img src="./doc/image/diagram.jpg" alt="LEMP Diagram" width="800">
+  <img src="./doc/images/diagram.jpg" alt="LEMP Diagram" width="800">
 </p>
 
 ### This setup provisions:
@@ -23,6 +21,17 @@ It follows Infrastructure as Code (IaC) best practices using modular Terraform d
 - Application Load Balancer 
 - ACM SSL Certificate
 - Route 53 Hosted Zone & DNS Record
+
+## Prerequisites
+Before Running Terraform, Make sure you have the following prerequisites ready:
+
+- ➡️ Terraform v1.3+ (recommended)
+- ➡️ AWS CLI configured with proper IAM credentials
+- ➡️ A registered domain name (e.g., from GoDaddy, Namecheap, etc.)
+- ➡️ Hosted Zone created in Route 53 — Example: hosted zone name: api.techsaif.gzz.io
+- ➡️ Name Servers updated at your domain registrar
+- ➡️ Public and Private Key
+- ➡️ Docker image pushed to Amazon ECR
 
 
 
