@@ -33,6 +33,40 @@ Before Running Terraform, Make sure you have the following prerequisites ready:
 - ➡️ Public and Private Key
 - ➡️ Docker image pushed to Amazon ECR
 
+## *Step 1:* 
+### Setup ECR:
+To work with this ECS we need to Create ECR.
+
+- 1️⃣ Create an AWS ECR Repository
+ ```bash
+  aws ecr create-repository --repository-name <Repo-name> --region ap-south-1
+ ```
+  Save the given outputURI.
+  
+- 2️⃣ Login Docker to ECR
+ ```bash
+aws ecr get-login-password --region ap-south-1 | \
+docker login --username AWS --password-stdin 123456789012.dkr.ecr.ap-south-1.amazonaws.com
+ ```
+
+- 3️⃣ Build Docker Image Locally
+
+ ```bash
+  docker build -t my-app .
+ ```
+Check:
+```bash
+  docker bimages
+ ```
+  
+- 4️⃣ Tag the Image for ECR
+
+```bash
+  docker tag my-app:latest 123456789012.dkr.ecr.ap-south-1.amazonaws.com/my-app:latest
+```
+
+-  Push Image to ECR
+
 
 
 ## Infrastructure Evidence
