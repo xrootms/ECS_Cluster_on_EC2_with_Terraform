@@ -8,27 +8,16 @@ It follows Infrastructure as Code (IaC) best practices using modular Terraform d
 **This setup provisions:**
 
 - VPC
-
 - Security Groups
-
 - VPC Endpoints (Private AWS access)
-
 - Bastion Host (EC2 in Public Subnet)
-
 - IAM Roles
-
 - ECS Instance Role
-
 - ECS Task Execution Role
-
 - Auto Scaling Group (ECS Cluster Capacity)
-
 - Amazon ECS Cluster (EC2 launch type)
-
 - Application Load Balancer (ALB)
-
 - ACM SSL Certificate
-
 - Route 53 Hosted Zone & DNS Record
 
 
