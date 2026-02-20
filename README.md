@@ -11,16 +11,16 @@ It follows Infrastructure as Code (IaC) best practices using modular Terraform d
 
 ### This setup provisions:
 
-- VPC
-- Security Groups
-- VPC Endpoints
-- Bastion Host (EC2 in Public Subnet)
-- IAM Roles (ECS Instance Role, ECS Task Execution Role)
-- Auto Scaling Group (ECS Cluster Capacity)
-- ECS Cluster (EC2 launch type)
-- Application Load Balancer 
-- ACM SSL Certificate
-- Route 53 Hosted Zone & DNS Record
+- ➡️ VPC (public & Private subnet, Nat gateway, EIP, Internet Gateway, and route tables)
+- ➡️ Security Groups
+- ➡️ VPC Endpoints
+- ➡️ Bastion Host (EC2 in Public Subnet)
+- ➡️ IAM Roles (ECS Instance Role, ECS Task Execution Role)
+- ➡️ Auto Scaling Group (ECS Cluster Capacity)
+- ➡️ ECS Cluster (EC2 launch type)
+- ➡️ Application Load Balancer 
+- ➡️ ACM SSL Certificate
+- ➡️ Route 53 Hosted Zone & DNS Record
 
 ## Prerequisites
 Before Running Terraform, Make sure you have the following prerequisites ready:
