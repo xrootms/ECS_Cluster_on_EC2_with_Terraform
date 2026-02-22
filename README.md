@@ -10,13 +10,13 @@ It follows Infrastructure as Code (IaC) best practices using modular Terraform d
 
 ### This setup provisions:
 
-- VPC (public & Private subnet, Nat gateway, EIP, Internet Gateway, and route tables)
+- VPC *(public & Private subnet, Nat gateway, EIP, Internet Gateway, and route tables)*
 - Security Groups
 - VPC Endpoints
-- Bastion Host (EC2 in Public Subnet)
-- IAM Roles (ECS Instance Role, ECS Task Execution Role)
-- Auto Scaling Group (ECS Cluster Capacity)
-- ECS Cluster (EC2 launch type)
+- Bastion Host *(EC2 in Public Subnet)*
+- IAM Roles *(ECS Instance Role, ECS Task Execution Role)*
+- Auto Scaling Group *(ECS Cluster Capacity)*
+- ECS Cluster *(EC2 launch type)*
 - Application Load Balancer 
 - ACM SSL Certificate
 - Route 53 Hosted Zone & DNS Record
@@ -24,18 +24,18 @@ It follows Infrastructure as Code (IaC) best practices using modular Terraform d
 ## Prerequisites
 Before Running Terraform, Make sure you have the following prerequisites ready:
 
-- ➡️ Terraform v1.3+ (recommended)
-- ➡️ AWS CLI configured with proper IAM credentials
-- ➡️ A registered domain name (e.g., from GoDaddy, Namecheap, etc.)
-- ➡️ Hosted Zone created in Route 53 — Example: hosted zone name: api.techsaif.gzz.io
-- ➡️ Name Servers updated at your domain registrar
-- ➡️ Public and Private Key
-- ➡️ Docker image pushed to Amazon ECR
+- Terraform v1.3+ *(recommended)*
+- AWS CLI configured with proper IAM credentials
+- A registered domain name *(e.g., from GoDaddy, Namecheap, etc.)*
+- Hosted Zone created in Route 53 — Example: hosted zone name: api.techsaif.gzz.io
+- Name Servers updated at your domain registrar
+- Public and Private Key
+- Docker image pushed to Amazon ECR
 
 ## *Step 1:*  
 ### Setup ECR:
 
-1️⃣ **Create an AWS ECR Repository and Save the given output URI.
+1️⃣ **Create an AWS ECR Repository and Save the given output URI.**
  ```bash
   aws ecr create-repository --repository-name <Repo-name> --region ap-south-1
  ```
