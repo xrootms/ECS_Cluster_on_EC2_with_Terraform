@@ -10,16 +10,16 @@ It follows Infrastructure as Code (IaC) best practices using modular Terraform d
 
 ### This setup provisions:
 
-- ➡️ VPC (public & Private subnet, Nat gateway, EIP, Internet Gateway, and route tables)
-- ➡️ Security Groups
-- ➡️ VPC Endpoints
-- ➡️ Bastion Host (EC2 in Public Subnet)
-- ➡️ IAM Roles (ECS Instance Role, ECS Task Execution Role)
-- ➡️ Auto Scaling Group (ECS Cluster Capacity)
-- ➡️ ECS Cluster (EC2 launch type)
-- ➡️ Application Load Balancer 
-- ➡️ ACM SSL Certificate
-- ➡️ Route 53 Hosted Zone & DNS Record
+- VPC (public & Private subnet, Nat gateway, EIP, Internet Gateway, and route tables)
+- Security Groups
+- VPC Endpoints
+- Bastion Host (EC2 in Public Subnet)
+- IAM Roles (ECS Instance Role, ECS Task Execution Role)
+- Auto Scaling Group (ECS Cluster Capacity)
+- ECS Cluster (EC2 launch type)
+- Application Load Balancer 
+- ACM SSL Certificate
+- Route 53 Hosted Zone & DNS Record
 
 ## Prerequisites
 Before Running Terraform, Make sure you have the following prerequisites ready:
@@ -180,7 +180,9 @@ To work with this whole setup we need to setup  Route53 and in Route53 we first 
   <img src="./doc/images/V" alt="LEMP Diagram" width="900">
 </p>
 
-V
+---
+
+#### Cleanup
 
 - To avoid unnecessary costs, destroy the infrastructure when no longer needed
 ```bash
@@ -188,14 +190,4 @@ terraform destroy
 ```
 
   ⭐ If you found this project interesting, consider giving it a star!
-## Infrastructure Evidence
 
-All resources were provisioned via Terraform (no manual AWS Console creation).
-
-Screenshots included for:
-
-- Successful terraform apply
-- Running ECS cluster
-- Healthy ALB target group
-- Issued ACM certificate
-- Working HTTPS endpoint
