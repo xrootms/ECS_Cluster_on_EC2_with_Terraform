@@ -71,7 +71,7 @@ docker login --username AWS --password-stdin 471112623479.dkr.ecr.ap-south-1.ama
   docker push 471112623479.dkr.ecr.ap-south-1.amazonaws.com/sample-node-app:latest
 ```
 
-## *Step 1:* 
+## *Step 2:* 
 ### Setup Hosted Zone :
 To work with this whole setup we need to setup  Route53 and in Route53 we first need to setup our hosted zone.
 
@@ -94,6 +94,45 @@ To work with this whole setup we need to setup  Route53 and in Route53 we first 
   <img src="./doc/images/domain-ns.png" alt="LEMP Diagram" width="600">
 </p>
 
+## *Step 3:*
+####  Clone the repo:
+   ```bash
+   git clone https://github.com/xrootms/terraform-jenkins-setup.git
+   cd terraform-jenkins-setup
+   ```
+
+#### 2. Copy and edit variables: (Update variable values as needed — VPC, CIDR, public key, region, etc.)
+   ```bash
+   cp terraform.tfvars.example terraform.tfvars
+   ```
+
+#### 3. Initialize Terraform:
+   ```bash
+   terraform init
+   ```
+
+#### 4. Plan and Apply:
+   ```bash
+   terraform plan
+   terraform apply
+   ```
+
+#### 5. Get ssh connection for EC2:
+
+<p align="center">
+  <img src="./image/apply-copy.png" alt="LEMP Diagram" width="1000">
+</p>
+
+---
+## *After successful deployment:*
+
+🔹**Hosted zone:**
+
+  - *The ALB DNS name is mapped to jenkins.techsaif.gzz.io using a Route 53 A record*
+
+<p align="center">
+  <img src="./image/06-Hoted-zone-img.jpg" alt="LEMP Diagram" width="900">
+</p>
 
 
 
