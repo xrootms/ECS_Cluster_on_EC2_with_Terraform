@@ -36,15 +36,13 @@ Before Running Terraform, Make sure you have the following prerequisites ready:
 ## *Step 1:*  
 ### Setup ECR:
 
-1️⃣ **Create an AWS ECR Repository**
+1️⃣ **Create an AWS ECR Repository and Save the given output URI.
  ```bash
   aws ecr create-repository --repository-name <Repo-name> --region ap-south-1
  ```
 <p align="center">
   <img src="./doc/images/ecr-sample-node-app.png" alt="LEMP Diagram" width="900">
 </p>
-
-  *Save the given output URI.*
   
 2️⃣ **Login Docker to ECR**
  ```bash
@@ -55,10 +53,8 @@ docker login --username AWS --password-stdin 471112623479.dkr.ecr.ap-south-1.ama
 3️⃣ **Build Docker Image Locally**
  ```bash
   docker build -t sample-node-app .
- ```
-*Check Images:*
-```bash
-  docker images
+
+  docker images    #Check Images
  ```
   
 4️⃣ **Tag the Image for ECR**
@@ -79,16 +75,7 @@ To work with this whole setup we need to setup  Route53 and in Route53 we first 
 - 2️⃣  In the Domain name field, enter the exact domain name you own (e.g., techsaif.gzz.io)
 - 3️⃣  Select Type → Public hosted zone
 - 4️⃣  Click Create hosted zone
-- 
- <p align="center">
-  <img src="./image/02-hostedzoneimage.png" alt="LEMP Diagram" width="400">
-</p>
-
 - 5️⃣ Once you created you will get these four records which is "ns records".
- <p align="center">
-  <img src="./image/03-hostedzoneimage2.png" alt="LEMP Diagram" width="800">
-</p>
-
 - 6️⃣ Update these ns recode over your domine register's ns recode.
 <p align="center">
   <img src="./doc/images/domain-ns.png" alt="LEMP Diagram" width="600">
