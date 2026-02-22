@@ -70,6 +70,30 @@ docker login --username AWS --password-stdin 471112623479.dkr.ecr.ap-south-1.ama
   docker push 471112623479.dkr.ecr.ap-south-1.amazonaws.com/sample-node-app:latest
 ```
 
+## *Step 1:* 
+### Setup Hosted Zone :
+To work with this whole setup we need to setup  Route53 and in Route53 we first need to setup our hosted zone.
+
+- 1️⃣  Navigate to Route 53 → Hosted zones → Create hosted zone
+- 2️⃣  In the Domain name field, enter the exact domain name you own (e.g., techsaif.gzz.io)
+- 3️⃣  Select Type → Public hosted zone
+- 4️⃣  Click Create hosted zone
+- 
+ <p align="center">
+  <img src="./image/02-hostedzoneimage.png" alt="LEMP Diagram" width="400">
+</p>
+
+- 5️⃣ Once you created you will get these four records which is "ns records".
+ <p align="center">
+  <img src="./image/03-hostedzoneimage2.png" alt="LEMP Diagram" width="800">
+</p>
+
+- 6️⃣ Update these ns recode over your domine register's ns recode.
+<p align="center">
+  <img src="./doc/image/domain-ns.png" alt="LEMP Diagram" width="600">
+</p>
+
+
 
 
 
