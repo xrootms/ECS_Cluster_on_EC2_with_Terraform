@@ -40,7 +40,7 @@ Before Running Terraform, Make sure you have the following prerequisites ready:
   aws ecr create-repository --repository-name <Repo-name> --region ap-south-1
  ```
 <p align="center">
-  <img src="./doc/images/ecr-sample-node-app.png" alt="LEMP Diagram" width="700">
+  <img src="./doc/images/ecr-sample-node-app.png" alt="LEMP Diagram" width="900">
 </p>
 
   *Save the given output URI.*
