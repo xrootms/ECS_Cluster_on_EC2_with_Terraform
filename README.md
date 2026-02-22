@@ -33,7 +33,8 @@ Before Running Terraform, Make sure you have the following prerequisites ready:
 - ➡️ Public and Private Key
 - ➡️ Docker image pushed to Amazon ECR
 
-## *Step 1:*  Setup ECR:
+## *Step 1:*  
+### Setup ECR:
 
 1️⃣ **Create an AWS ECR Repository**
  ```bash
@@ -90,7 +91,7 @@ To work with this whole setup we need to setup  Route53 and in Route53 we first 
 
 - 6️⃣ Update these ns recode over your domine register's ns recode.
 <p align="center">
-  <img src="./doc/image/domain-ns.png" alt="LEMP Diagram" width="600">
+  <img src="./doc/images/domain-ns.png" alt="LEMP Diagram" width="600">
 </p>
 
 
