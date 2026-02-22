@@ -32,10 +32,10 @@ Before Running Terraform, Make sure you have the following prerequisites ready:
 - Public and Private Key
 - Docker image pushed to Amazon ECR
 
-## *Step 1:*  
+## Step 1️⃣: 
 ### Setup ECR:
 
-1️⃣ **Create an AWS ECR Repository and Save the given output URI.**
+1️ - **Create an AWS ECR Repository and Save the given output URI.**
  ```bash
   aws ecr create-repository --repository-name <Repo-name> --region ap-south-1
  ```
