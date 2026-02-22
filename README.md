@@ -84,8 +84,8 @@ To work with this whole setup we need to setup  Route53 and in Route53 we first 
 ## *Step 3:*
 ####  Clone the repo:
    ```bash
-   git clone https://github.com/xrootms/terraform-jenkins-setup.git
-   cd terraform-jenkins-setup
+   git clone https://github.com/xrootms/ECS_Cluster_on_EC2_with_Terraform.git
+   cd ECS_Cluster_on_EC2_with_Terraform
    ```
 
 #### 2. Copy and edit variables: (Update variable values as needed — VPC, CIDR, public key, region, etc.)
@@ -115,10 +115,10 @@ To work with this whole setup we need to setup  Route53 and in Route53 we first 
 
 🔹**Hosted zone:**
 
-  - *The ALB DNS name is mapped to jenkins.techsaif.gzz.io using a Route 53 A record*
+  - *The ALB DNS name is mapped to **www.api.techsaif.gzz.io** and **api.techsaif.gzz.io** using a Route 53 A record*
 
 <p align="center">
-  <img src="./image/06-Hoted-zone-img.jpg" alt="LEMP Diagram" width="900">
+  <img src="./doc/image/Route53-hz.png" alt="LEMP Diagram" width="900">
 </p>
 
 
