@@ -44,26 +44,26 @@ Before Running Terraform, Make sure you have the following prerequisites ready:
 2️⃣ **Login Docker to ECR**
  ```bash
 aws ecr get-login-password --region ap-south-1 | \
-docker login --username AWS --password-stdin 123456789012.dkr.ecr.ap-south-1.amazonaws.com
+docker login --username AWS --password-stdin 471112623479.dkr.ecr.ap-south-1.amazonaws.com
  ```
 
 3️⃣ **Build Docker Image Locally**
  ```bash
-  docker build -t my-app .
+  docker build -t sample-node-app .
  ```
-*Check:*
+*Check Images:*
 ```bash
-  docker bimages
+  docker images
  ```
   
 4️⃣ **Tag the Image for ECR**
 ```bash
-  docker tag my-app:latest 123456789012.dkr.ecr.ap-south-1.amazonaws.com/my-app:latest
+  docker tag sample-node-app:latest 471112623479.dkr.ecr.ap-south-1.amazonaws.com/sample-node-app:latest
 ```
 
 5️⃣ **Push Image to ECR**
 ```bash
-  docker push 123456789012.dkr.ecr.ap-south-1.amazonaws.com/my-app:latest
+  docker push 471112623479.dkr.ecr.ap-south-1.amazonaws.com/sample-node-app:latest
 ```
 
 
