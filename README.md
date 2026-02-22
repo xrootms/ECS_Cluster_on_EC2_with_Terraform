@@ -126,7 +126,7 @@ To work with this whole setup we need to setup  Route53 and in Route53 we first 
   - *An ACM Certificate is created for: **www.api.techsaif.gzz.io & api.techsaif.gzz.io** and attached to the ALB for https traffic.*
 
 <p align="center">
-  <img src="./doc/images/acm" alt="LEMP Diagram" width="900">
+  <img src="./doc/images/acm.png" alt="LEMP Diagram" width="900">
 </p>
 
 🔹**Accessing Jenkins:**
@@ -141,6 +141,13 @@ To work with this whole setup we need to setup  Route53 and in Route53 we first 
 
 
 
+
+- To avoid unnecessary costs, destroy the infrastructure when no longer needed
+```bash
+terraform destroy    
+```
+
+  ⭐ If you found this project interesting, consider giving it a star!
 ## Infrastructure Evidence
 
 All resources were provisioned via Terraform (no manual AWS Console creation).
