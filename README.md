@@ -103,11 +103,7 @@ To work with this whole setup we need to setup  Route53 and in Route53 we first 
    terraform apply
    ```
 
-#### 5. Get ssh connection for EC2:
-
-<p align="center">
-  <img src="./image/apply-copy.png" alt="LEMP Diagram" width="1000">
-</p>
+#### 5. Get ssh connection for Bastion EC2:
 
 ---
 ## *After successful deployment:*
@@ -137,9 +133,54 @@ To work with this whole setup we need to setup  Route53 and in Route53 we first 
   <img src="./doc/images/browser.png" alt="LEMP Diagram" width="900">
 </p>
 
+🔹**ECS Cluster running - Tasks:**
+<p align="center">
+  <img src="./doc/images/ECS-Cluster.png" alt="LEMP Diagram" width="900">
+</p>
 
+🔹**ECS Cluster - Services:**
 
+<p align="center">
+  <img src="./doc/images/ECS-Cluster-Servics.png" alt="LEMP Diagram" width="900">
+</p>
 
+🔹**ECS Cluster - Infrastructure:**
+
+<p align="center">
+  <img src="./doc/images/ECS-Cluster-Servics-Infrastructure2.png" alt="LEMP Diagram" width="900">
+</p>
+
+🔹**ECS Cluster - Infrastructure (Capacity_Providers):**
+
+<p align="center">
+  <img src="./doc/images/ECS-Cluster-Servics-Infrastructure.-cps-cp_name.png" alt="LEMP Diagram" width="900">
+</p>
+
+🔹**Application Load Balancer (HTTPS 443):**
+
+<p align="center">
+  <img src="./doc/images/ALB.png" alt="LEMP Diagram" width="900">
+</p>
+
+🔹**LB - Target Group:**
+
+<p align="center">
+  <img src="./doc/images/LB-Target-Group.png" alt="LEMP Diagram" width="900">
+</p>
+
+🔹**Auto Scaling Group:**
+
+<p align="center">
+  <img src="./doc/images/Ec2-ASG.png" alt="LEMP Diagram" width="900">
+</p>
+
+🔹**VPC:**
+
+<p align="center">
+  <img src="./doc/images/V" alt="LEMP Diagram" width="900">
+</p>
+
+V
 
 - To avoid unnecessary costs, destroy the infrastructure when no longer needed
 ```bash
