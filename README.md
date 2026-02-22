@@ -1,5 +1,4 @@
-# ECS_Cluster_on_EC2_with_Terraform
-
+# ECS Cluster on EC2 with Terraform
 This project provisions a complete AWS infrastructure using Terraform to deploy a Node.js containerized application on Amazon ECS (EC2 launch type) behind an Application Load Balancer, with a custom domain and HTTPS enabled.
 It follows Infrastructure as Code (IaC) best practices using modular Terraform design.
 
@@ -129,7 +128,7 @@ To work with this whole setup we need to setup  Route53 and in Route53 we first 
   <img src="./doc/images/acm.png" alt="LEMP Diagram" width="900">
 </p>
 
-🔹**Accessing Jenkins:**
+🔹**Accessing Node app:**
 
   - *Once Terraform apply completes and DNS propagation finishes:*
   - *Open https://api.techsaif.gzz.io in your browser.*
