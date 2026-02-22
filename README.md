@@ -118,7 +118,24 @@ To work with this whole setup we need to setup  Route53 and in Route53 we first 
   - *The ALB DNS name is mapped to **www.api.techsaif.gzz.io** and **api.techsaif.gzz.io** using a Route 53 A record*
 
 <p align="center">
-  <img src="./doc/image/Route53-hz.png" alt="LEMP Diagram" width="900">
+  <img src="./doc/images/Route53-hz.png" alt="LEMP Diagram" width="900">
+</p>
+
+🔹**SSL Configuration:**
+
+  - *An ACM Certificate is created for: **www.api.techsaif.gzz.io & api.techsaif.gzz.io** and attached to the ALB for https traffic.*
+
+<p align="center">
+  <img src="./doc/images/acm" alt="LEMP Diagram" width="900">
+</p>
+
+🔹**Accessing Jenkins:**
+
+  - *Once Terraform apply completes and DNS propagation finishes:*
+  - *Open https://api.techsaif.gzz.io in your browser.*
+
+<p align="center">
+  <img src="./doc/images/browser.png" alt="LEMP Diagram" width="900">
 </p>
 
 
