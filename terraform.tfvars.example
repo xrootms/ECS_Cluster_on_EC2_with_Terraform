@@ -5,13 +5,13 @@ ap_availability_zone = ["ap-south-1a", "ap-south-1b"]
 cidr_private_subnet  = ["10.0.3.0/24", "10.0.4.0/24"]
 
 
-public_key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGU0Ul2JBnOYEDPfdErBk/P6ZxMxffXFNAZAcK58QNzC MD. SAIFUDDIN@LAPTOP-NAGPU8K5"
+public_key = "ssh-ed25519 ....... MD. SAIFUDDIN@LAPTOP-NAGPU8K5"
 key_name   = "devops_proj1"
 
 bastion_ec2_ami_id = "ami-07f07a6e1060cd2a8"
 
 aws_region = "ap-south-1"
 
-image_uri = "471112623479.dkr.ecr.ap-south-1.amazonaws.com/sample-node-app:latest"
+image_uri = "123456789.dkr.ecr.ap-south-1.amazonaws.com/sample-node-app:latest"
 
 domain_name = "api.techsaif.qzz.io"
