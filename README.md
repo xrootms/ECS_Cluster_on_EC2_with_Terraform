@@ -217,8 +217,7 @@ terraform destroy
 
 ---
 
-
-- Resources:
+Resources:
 
 - Amazon Elastic Container Service: https://docs.aws.amazon.com/AmazonECS/latest/developerguide/Welcome.html
 
