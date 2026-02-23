@@ -11,8 +11,7 @@ It provisions a secure, scalable, and highly available environment to run a cont
 </p>
 
 ### This setup provisions:
-
-- VPC *(public & Private subnet, Nat gateway, EIP, Internet Gateway, and route tables)*
+- VPC *(public & Private subnet, Nat, EIP, Internet Gateway, and route tables)*
 - Security Groups
 - VPC Endpoints
 - Bastion Host *(EC2 in Public Subnet)*
@@ -32,6 +31,12 @@ It provisions a secure, scalable, and highly available environment to run a cont
 - NAT Gateway provides secure outbound internet access (ex. OS updates) while preventing inbound exposure.
 - IAM roles are scoped with minimum required permissions.
 - HTTPS enforced with ACM certificate
+
+### High Availability & Scalability
+- Multi-AZ subnet distribution
+- Auto Scaling Group backing ECS capacity
+- Elastic load balancing across availability zones
+- Decoupled networking and compute layers
 
 ## Prerequisites
 Before Running Terraform, Make sure you have the following prerequisites ready:
