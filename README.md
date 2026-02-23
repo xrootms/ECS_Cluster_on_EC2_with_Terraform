@@ -129,6 +129,13 @@ To work with this whole setup we need to setup  Route53 and in Route53 we first 
    ```
 
 #### 5. Get ssh connection for Bastion EC2:
+- then SSH into Bastion Host
+- then SSH into Private ECS Instance (via Bastion)
+- Verify Running Containers (docker ps -a)
+
+  <p align="center">
+  <img src="./doc/images/ssh_from_bastion" alt="LEMP Diagram" width="600">
+</p>
 
 ---
 ## *After successful deployment:*
