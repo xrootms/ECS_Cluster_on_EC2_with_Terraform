@@ -39,6 +39,7 @@ Before Running Terraform, Make sure you have the following prerequisites ready:
  ```bash
   aws ecr create-repository --repository-name sample-node-app --region ap-south-1
  ```
+
 <p align="center">
   <img src="./doc/images/ecr-sample-node-app.png" alt="LEMP Diagram" width="900">
 </p>
@@ -70,17 +71,18 @@ docker login --username AWS --password-stdin 471112623479.dkr.ecr.ap-south-1.ama
 ### Setup Hosted Zone :
 To work with this whole setup we need to setup  Route53 and in Route53 we first need to setup our hosted zone.
 
-- 1️.  Navigate to Route 53 → Hosted zones → Create hosted zone
-- 2️.  In the Domain name field, enter the exact domain name you own (e.g., techsaif.gzz.io)
-- 3️.  Select Type → Public hosted zone
-- 4️.  Click Create hosted zone
-- 5️. Once you created you will get these four records which is "ns records".
-- 6️. Update these ns recode over your domine register's ns recode.
+1️.  Navigate to Route 53 → Hosted zones → Create hosted zone
+2️.  In the Domain name field, enter the exact domain name you own (e.g., techsaif.gzz.io)
+3️.  Select Type → Public hosted zone
+4️.  Click Create hosted zone
+5️. Once you created you will get these four records which is "ns records".
+6️. Update these ns recode over your domine register's ns recode.
+
 <p align="center">
   <img src="./doc/images/domain-ns.png" alt="LEMP Diagram" width="600">
 </p>
 
-## *Step 3:*
+## Step 2️⃣:
 ####  Clone the repo:
    ```bash
    git clone https://github.com/xrootms/ECS_Cluster_on_EC2_with_Terraform.git
@@ -150,7 +152,7 @@ To work with this whole setup we need to setup  Route53 and in Route53 we first 
   <img src="./doc/images/ECS-Cluster-Servics-Infrastructure2.png" alt="LEMP Diagram" width="900">
 </p>
 
-🔹**ECS Cluster - Infrastructure (Capacity_Providers):**
+🔹**ECS Cluster - Infrastructure (Capacity Providers):**
 
 <p align="center">
   <img src="./doc/images/ECS-Cluster-Servics-Infrastructure.-cps-cp_name.png" alt="LEMP Diagram" width="900">
@@ -185,6 +187,7 @@ To work with this whole setup we need to setup  Route53 and in Route53 we first 
 #### Cleanup
 
 - To avoid unnecessary costs, destroy the infrastructure when no longer needed
+  
 ```bash
 terraform destroy    
 ```
