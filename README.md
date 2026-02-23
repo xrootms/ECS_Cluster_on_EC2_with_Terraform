@@ -14,7 +14,7 @@ It provisions a secure, scalable, and highly available environment to run a cont
 - VPC *(public & Private subnet, Nat, EIP, Internet Gateway, and route tables)*
 - Security Groups
 - VPC Endpoints
-- Bastion Host *(EC2 in Public Subnet)*
+- Bastion Host *(in Public Subnet)*
 - IAM Roles *(ECS Instance Role, ECS Task Execution Role)*
 - Auto Scaling Group *(ECS Cluster Capacity)*
 - ECS Cluster *(EC2 launch type)*
@@ -23,20 +23,20 @@ It provisions a secure, scalable, and highly available environment to run a cont
 - Route 53 Hosted Zone & DNS Record
   
 ### Security Design
-- ECS instances are in Private Subnets
-- Only ALB is publicly accessible
-- Bastion Host for SSH access
+- ECS instances are in Private Subnets & Bastion Host in Public Subnet
 - Security Groups follow least privilege principle
-- VPC Endpoints enable private access to AWS services (ex. S3, ECR) without traversing the public internet.
-- NAT Gateway provides secure outbound internet access (ex. OS updates) while preventing inbound exposure.
+- Only ALB is publicly accessible
+- VPC Endpoints enable private access to AWS services *(ex. S3, ECR, CloudWatch)*
+- NAT Gateway provides secure outbound internet access (*ex. OS updates)*
 - IAM roles are scoped with minimum required permissions.
-- HTTPS enforced with ACM certificate
+- HTTPS enforced with ACM Certificate
 
 ### High Availability & Scalability
 - Multi-AZ subnet distribution
 - Auto Scaling Group backing ECS capacity
 - Elastic load balancing across availability zones
-- Decoupled networking and compute layers
+
+---
 
 ## Prerequisites
 Before Running Terraform, Make sure you have the following prerequisites ready:
