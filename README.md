@@ -108,6 +108,7 @@ To work with this whole setup we need to setup  Route53 and in Route53 we first 
 ####  Clone the repo:
    ```bash
    git clone https://github.com/xrootms/ECS_Cluster_on_EC2_with_Terraform.git
+
    cd ECS_Cluster_on_EC2_with_Terraform
    ```
 
