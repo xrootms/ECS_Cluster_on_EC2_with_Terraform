@@ -215,5 +215,22 @@ To work with this whole setup we need to setup  Route53 and in Route53 we first 
 terraform destroy    
 ```
 
+---
+
+
+- Resources:
+
+- Amazon Elastic Container Service: https://docs.aws.amazon.com/AmazonECS/latest/developerguide/Welcome.html
+
+- ECS task networking options for EC2: https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-networking.html
+
+- AWS ECS task placement strategy: https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-placement-strategies.html
+
+- AWS ECS task placement constraints: https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-placement-constraints.html
+
+- Amazon ECR interface VPC endpoints: https://docs.aws.amazon.com/AmazonECR/latest/userguide/vpc-endpoints.html
+
+
+
   ⭐ If you found this project interesting, consider giving it a star!
 
