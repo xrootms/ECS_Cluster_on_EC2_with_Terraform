@@ -1,6 +1,8 @@
 # ECS Cluster on EC2 with Terraform
-This project provisions a complete AWS infrastructure using Terraform to deploy a Node.js containerized application on Amazon ECS (EC2 launch type) behind an Application Load Balancer, with a custom domain and HTTPS enabled.
-It follows Infrastructure as Code (IaC) best practices using modular Terraform design.
+This project implements a production-ready container platform on AWS using Terraform as Infrastructure as Code (IaC).
+
+It provisions a secure, scalable, and highly available environment to run a containerized Node.js application on Amazon Elastic Container Service (EC2 launch type) behind an Application Load Balancer, with a custom domain and HTTPS enforced via AWS Certificate Manager.
+
 
 ### Architecture Diagram
 
