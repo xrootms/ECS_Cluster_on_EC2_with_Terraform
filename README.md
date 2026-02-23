@@ -135,7 +135,7 @@ To work with this whole setup we need to setup  Route53 and in Route53 we first 
 - Verify Running Containers (docker ps -a)
 
   <p align="center">
-  <img src="./doc/images/ssh_from_bastion.png" alt="LEMP Diagram" width="600">
+  <img src="./doc/images/ssh_from_bastion.png" alt="LEMP Diagram" width="800">
 </p>
 
 ---
