@@ -32,9 +32,10 @@ It provisions a secure, scalable, and highly available environment to run a cont
 - HTTPS enforced with ACM Certificate
 
 ### High Availability & Scalability
-- Multi-AZ subnet distribution
-- Auto Scaling Group backing ECS capacity
-- Elastic load balancing across availability zones
+- Multi-AZ subnet configuration
+- Auto Scaling Group maintains cluster capacity
+- ALB distributes traffic across healthy targets
+- ECS service maintains desired task count
 
 ---
 
