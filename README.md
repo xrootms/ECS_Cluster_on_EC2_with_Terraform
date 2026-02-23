@@ -196,7 +196,7 @@ To work with this whole setup we need to setup  Route53 and in Route53 we first 
 🔹**VPC:**
 
 <p align="center">
-  <img src="./doc/images/V" alt="LEMP Diagram" width="900">
+  <img src="./doc/images/vpc.png" alt="LEMP Diagram" width="900">
 </p>
 
 ---
