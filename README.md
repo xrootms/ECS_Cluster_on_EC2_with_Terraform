@@ -84,10 +84,15 @@ docker login --username AWS --password-stdin 471112623479.dkr.ecr.ap-south-1.ama
 To work with this whole setup we need to setup  Route53 and in Route53 we first need to setup our hosted zone.
 
 1️.  Navigate to Route 53 → Hosted zones → Create hosted zone
+
 2️.  In the Domain name field, enter the exact domain name you own (e.g., techsaif.gzz.io)
+
 3️.  Select Type → Public hosted zone
+
 4️.  Click Create hosted zone
+
 5️. Once you created you will get these four records which is "ns records".
+
 6️. Update these ns recode over your domine register's ns recode.
 
 <p align="center">
