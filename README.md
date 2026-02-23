@@ -20,6 +20,16 @@ It follows Infrastructure as Code (IaC) best practices using modular Terraform d
 - Application Load Balancer 
 - ACM SSL Certificate
 - Route 53 Hosted Zone & DNS Record
+  
+### Security Design
+- ECS instances are in Private Subnets
+- Only ALB is publicly accessible
+- Bastion Host for SSH access
+- Security Groups follow least privilege principle
+- VPC Endpoints enable private access to AWS services (ex. S3, ECR) without traversing the public internet.
+- NAT Gateway provides secure outbound internet access (ex. OS updates) while preventing inbound exposure.
+- IAM roles are scoped with minimum required permissions.
+- HTTPS enforced with ACM certificate
 
 ## Prerequisites
 Before Running Terraform, Make sure you have the following prerequisites ready:
@@ -82,7 +92,7 @@ To work with this whole setup we need to setup  Route53 and in Route53 we first 
   <img src="./doc/images/domain-ns.png" alt="LEMP Diagram" width="600">
 </p>
 
-## Step 2️⃣:
+## Step 3️⃣:
 ####  Clone the repo:
    ```bash
    git clone https://github.com/xrootms/ECS_Cluster_on_EC2_with_Terraform.git
